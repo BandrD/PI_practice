@@ -8,19 +8,21 @@ tokenizer = AutoTokenizer.from_pretrained('Aniemore/rubert-tiny2-russian-emotion
 model = BertForSequenceClassification.from_pretrained('Aniemore/rubert-tiny2-russian-emotion-detection')
 
 
-def predict_emotion(text: str) -> str:
-    inputs = tokenizer(text, max_length=512, padding=True, truncation=True, return_tensors='pt')
-    outputs = model(**inputs)
-    predicted = torch.nn.functional.softmax(outputs.logits, dim=1)
-    predicted = torch.argmax(predicted, dim=1).numpy()
-
-    return LABELS[predicted[0]]
-
-
-def predict_emotions(text: str) -> dict:
+def get_model_outputs(text: str):
     inputs = tokenizer(text, max_length=512, padding=True, truncation=True, return_tensors='pt')
     outputs = model(**inputs)
     predicted = torch.nn.functional.softmax(outputs.logits, dim=1).detach().numpy()[0]
+    return predicted
+
+
+def predict_emotion(text: str) -> str:
+    predicted = get_model_outputs(text)
+    predicted_label = torch.argmax(torch.tensor(predicted)).numpy()
+    return LABELS[predicted_label]
+
+
+def predict_emotions(text: str) -> dict:
+    predicted = get_model_outputs(text)
     emotions_list = {LABELS[i]: predicted[i] for i in range(len(LABELS))}
     return emotions_list
 
