@@ -20,10 +20,8 @@ def predict_emotion(text: str) -> str:
 def predict_emotions(text: str) -> dict:
     inputs = tokenizer(text, max_length=512, padding=True, truncation=True, return_tensors='pt')
     outputs = model(**inputs)
-    predicted = torch.nn.functional.softmax(outputs.logits, dim=1)
-    emotions_list = {}
-    for i in range(len(predicted.detach().numpy()[0].tolist())):
-        emotions_list[LABELS[i]] = predicted.detach().numpy()[0].tolist()[i]
+    predicted = torch.nn.functional.softmax(outputs.logits, dim=1).detach().numpy()[0]
+    emotions_list = {LABELS[i]: predicted[i] for i in range(len(LABELS))}
     return emotions_list
 
 
