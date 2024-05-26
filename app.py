@@ -2,6 +2,7 @@ import torch
 from transformers import BertForSequenceClassification, AutoTokenizer
 
 import streamlit as st
+import numpy as np
 
 LABELS = ['neutral', 'happiness', 'sadness', 'enthusiasm', 'fear', 'anger', 'disgust']
 tokenizer = AutoTokenizer.from_pretrained('Aniemore/rubert-tiny2-russian-emotion-detection')
@@ -27,13 +28,24 @@ def predict_emotions(text: str) -> dict:
     return emotions_list
 
 
+def predict_overall_emotions(texts: list) -> dict:
+    overall_predictions = np.zeros(len(LABELS))
+    for text in texts:
+        predicted = get_model_outputs(text)
+        overall_predictions += predicted
+    overall_predictions /= np.sum(overall_predictions)  # Нормализация
+    emotions_list = {LABELS[i]: overall_predictions[i] for i in range(len(LABELS))}
+    return emotions_list
+
+
 if __name__ == '__main__':
     with st.chat_message('assistant'):
-        st.write('Привет, пиши предложение и я оценю выраженные эмоции')
+        st.write('Привет, введите несколько предложений для анализа эмоций. Каждое предложение должно быть на новой строке.')
     prompt = st.chat_input('Input')
     if prompt:
+        sentences = prompt.split('\n')
         with st.chat_message('assistant'):
-            result = predict_emotions(prompt)
-            st.write('Ваше предложение имеет следующие эмоции')
+            result = predict_overall_emotions(sentences)
+            st.write('Ваши предложения имеют следующие средние эмоции:')
             st.write(result)
             st.bar_chart(result)
