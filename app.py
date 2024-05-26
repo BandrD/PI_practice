@@ -2,7 +2,6 @@ import torch
 from transformers import BertForSequenceClassification, AutoTokenizer
 
 import streamlit as st
-import flake8
 
 LABELS = ['neutral', 'happiness', 'sadness', 'enthusiasm', 'fear', 'anger', 'disgust']
 tokenizer = AutoTokenizer.from_pretrained('Aniemore/rubert-tiny2-russian-emotion-detection')
