@@ -36,3 +36,4 @@ if __name__ == '__main__':
             result = predict_emotions(prompt)
             st.write('Ваше предложение имеет следующие эмоции')
             st.write(result)
+            st.bar_chart(result)
