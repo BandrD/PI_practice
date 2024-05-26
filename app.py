@@ -40,7 +40,8 @@ def predict_overall_emotions(texts: list) -> dict:
 
 if __name__ == '__main__':
     with st.chat_message('assistant'):
-        st.write('Привет, введите несколько предложений для анализа эмоций. Каждое предложение должно быть на новой строке.')
+        st.write('Привет, введите несколько предложений для анализа эмоций. '
+                 'Каждое предложение должно быть на новой строке.')
     prompt = st.chat_input('Input')
     if prompt:
         sentences = prompt.split('\n')
