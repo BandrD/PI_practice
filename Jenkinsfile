@@ -1,33 +1,41 @@
 pipeline {
     agent any
     stages {
-        stage('Clone repository') {
+        stage('requirements') {
             steps {
-                git branch: 'main', 
-                url: 'https://https://github.com/BandrD/PI_practice'
-            }
-        }
-        stage('Setup environment') {
-            steps {
-                sh 'pip install -r requirements.in'
-            }
-        }
-        stage('Run tests') {
-            steps {
-                sh 'pytest test_predict'
-            }
-        }
-        stage('Build Docker image') {
-            steps {
-                sh 'docker build -t BandrD/PI_practice .'
-            }
-        }
-        stage('Push Docker image') {
-            steps {
-                withDockerRegistry([ credentialsId: 'docker-hub-credentials', url: '' ]) {
-                    sh 'docker push BandrD/PI_practice'
+                dir('PI_practice'){
+                    sh 'pip install -r requirements.in'
                 }
             }
         }
+        stage('data_creation') {
+            steps {
+                dir('PI_practice'){
+                    sh 'python3 data_creation.py'
+                }
+            }
+        }
+        stage('model_preprocessing') {
+            steps {
+                dir('PI_practice'){
+                    sh 'python3 model_preprocessing.py'
+                }
+            }
+        }
+        stage('model_preparation') {
+            steps {
+                dir('PI_practice'){
+                    sh 'python3 model_preparation.py'
+                }
+            }
+        }
+        stage('model_testing') {
+            steps {
+                dir('PI_practice'){
+                    sh 'python3 model_testing.py'
+                }
+            }
+        }
+    
     }
 }
