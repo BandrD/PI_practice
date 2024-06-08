@@ -1,12 +1,9 @@
 pipeline {
     agent any
-    environment {
-        PYTHON = tool name: 'Python3', type: 'Python'
-    }
     stages {
         stage('requirements') {
             steps {
-                    sh 'pip install -r requirements.in'
+                    bat 'pip install -r requirements.in'
             }
         }
         stage('data_creation') {
