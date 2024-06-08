@@ -14,12 +14,12 @@ pipeline {
         }
         stage('run_data_test') {
             steps {
-                    bat "./pipeline.sh test_predict"
+                    bat "pytest test_predict"
             }
         }
         stage('run_model_test') {
             steps {
-                    bat "./pipeline.sh model_test"
+                    bat "pytest model_test"
             }
         }
     }
