@@ -1,0 +1,5 @@
+outs:
+- md5: c7aa706bc3531422903eef3f85c1473f
+  size: 2497682
+  hash: md5
+  path: tokenizer.json
