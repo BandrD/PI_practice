@@ -5,3 +5,7 @@ streamlit
 pytest
 requests
 dvc
+numpy
+pandas
+joblib
+scikit-learn
