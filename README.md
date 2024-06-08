@@ -28,4 +28,9 @@
 <b>Для запуска приложения используйте команду:</b> <code>docker-compose up -d</code> 
 
 # Работа с DVC
-![Снимок экрана 2024-06-08 194520](https://github.com/BandrD/PI_practice/assets/118203209/91eb1974-57af-41bd-b052-9baa5f77124a)
+![Снимок экрана 2024-06-08 210230](https://github.com/BandrD/PI_practice/assets/118203209/7184a261-614d-4f8a-8a5a-42882ec51334)
+
+# Работа с Jenkins 
+
+![janlins](https://github.com/BandrD/PI_practice/assets/118203209/dc8878b5-4197-4141-9feb-d029210bbf79)
+
