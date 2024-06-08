@@ -11,28 +11,28 @@ pipeline {
         stage('data_creation') {
             steps {
                 dir('PI_practice'){
-                    sh 'python3 data_creation.py'
+                    sh "./pipeline.sh data_creation"
                 }
             }
         }
         stage('model_preprocessing') {
             steps {
                 dir('PI_practice'){
-                    sh 'python3 model_preprocessing.py'
+                    sh "./pipeline.sh model_preprocessing.py"
                 }
             }
         }
         stage('model_preparation') {
             steps {
                 dir('PI_practice'){
-                    sh 'python3 model_preparation.py'
+                    sh "./pipeline.sh model_preparation"
                 }
             }
         }
         stage('model_testing') {
             steps {
                 dir('PI_practice'){
-                    sh 'python3 model_testing.py'
+                    sh "./pipeline.sh model_testing"
                 }
             }
         }
