@@ -3,27 +3,27 @@ pipeline {
     stages {
         stage('requirements') {
             steps {
-                    sh 'pip install -r requirements.in'
+                    bat 'pip install -r requirements.in'
             }
         }
         stage('data_creation') {
             steps {
-                    sh "./pipeline.sh data_creation"
+                    bat "./pipeline.sh data_creation"
             }
         }
         stage('model_preprocessing') {
             steps {
-                    sh "./pipeline.sh model_preprocessing.py"
+                    bat "./pipeline.sh model_preprocessing.py"
             }
         }
         stage('model_preparation') {
             steps {
-                    sh "./pipeline.sh model_preparation"
+                    bat "./pipeline.sh model_preparation"
             }
         }
         stage('model_testing') {
             steps {
-                    sh "./pipeline.sh model_testing"
+                    bat "./pipeline.sh model_testing"
             }
         }
     
