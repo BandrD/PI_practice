@@ -3,29 +3,24 @@ pipeline {
     stages {
         stage('requirements') {
             steps {
+                    bat 'python -m pip install --upgrade pip'
                     bat 'pip install -r requirements.in'
             }
         }
-        stage('data_creation') {
+        stage('dvc_data_get') {
             steps {
-                    bat "./pipeline.sh data_creation"
+                    bat "dvc pull"   
             }
         }
-        stage('model_preprocessing') {
+        stage('run_data_test') {
             steps {
-                    bat "./pipeline.sh model_preprocessing.py"
+                    bat "./pipeline.sh test_predict"
             }
         }
-        stage('model_preparation') {
+        stage('run_model_test') {
             steps {
-                    bat "./pipeline.sh model_preparation"
+                    bat "./pipeline.sh model_test"
             }
         }
-        stage('model_testing') {
-            steps {
-                    bat "./pipeline.sh model_testing"
-            }
-        }
-    
     }
 }
