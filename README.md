@@ -27,3 +27,5 @@
 
 <b>Для запуска приложения используйте команду:</b> <code>docker-compose up -d</code> 
 
+# Работа с DVC
+![Снимок экрана 2024-06-08 194520](https://github.com/BandrD/PI_practice/assets/118203209/91eb1974-57af-41bd-b052-9baa5f77124a)
