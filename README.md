@@ -34,3 +34,7 @@
 
 ![janlins](https://github.com/BandrD/PI_practice/assets/118203209/dc8878b5-4197-4141-9feb-d029210bbf79)
 
+# Метрики модели
+
+![Снимок экрана 2024-06-08 214043](https://github.com/BandrD/PI_practice/assets/118203209/6d855be5-fa58-4cf0-b040-9ebdebdf3b28)
+
