@@ -12,17 +12,17 @@ pipeline {
                 bat "dvc pull"
             }
         }
-         stage('Preprocess data') {
+         stage('preprocess_data') {
             steps {
                 bat 'dvc repro preprocess'
             }
         }
-        stage('Train model') {
+        stage('train_model') {
             steps {
                 bat 'dvc repro train'
             }
         }
-        stage('Evaluate model') {
+        stage('evaluate_model') {
             steps {
                 bat 'dvc repro evaluate'
             }
