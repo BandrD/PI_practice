@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('requirements') {
             steps {
-                    bat 'pip install -r requirements.in'
+                    sh 'pip install -r requirements.in'
             }
         }
         stage('data_creation') {
