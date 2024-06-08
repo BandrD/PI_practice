@@ -4,3 +4,4 @@ safetensors
 streamlit
 pytest
 requests
+dvc
