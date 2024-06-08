@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def preprocess_data(input_path, output_path):
     df = pd.read_csv(input_path)
     df = df.dropna()

@@ -1,4 +1,3 @@
-from transformers import pipeline
 import pandas as pd
 from sklearn.metrics import accuracy_score, f1_score
 import joblib
