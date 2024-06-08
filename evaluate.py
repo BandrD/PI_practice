@@ -21,8 +21,8 @@ def evaluate_model(data_path, model_path):
         'f1_score': f1
     }
 
-    print(metrics.get(accuracy))
-    print(metrics.get(f1_score))
+    print(f"Accuracy: {metrics.get('accuracy')}")
+    print(f"f1_score: {metrics.get('f1_score')}")
 
 
 if __name__ == "__main__":
